@@ -9,7 +9,7 @@ pipeline {
     }
 
     stages {
-
+         /*
         stage('Install eksctl') {
             steps {
                sh '''
@@ -20,6 +20,7 @@ pipeline {
                  '''
             }
         }
+        */
 
         stage('Configure AWS Credentials') {
             steps {
