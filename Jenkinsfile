@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_DEFAULT_REGION = "ap-south-1"
+        AWS_DEFAULT_REGION = "us-east-1"
         CLUSTER_NAME = "dev-eks-cluster"
         NODE_TYPE = "t3.medium"
         NODE_COUNT = "2"
