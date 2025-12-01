@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         AWS_DEFAULT_REGION = "us-east-1"
-        CLUSTER_NAME = "dev-eks-cluster"
-        NODE_TYPE = "t3.medium"
-        NODE_COUNT = "2"
+        //CLUSTER_NAME = "dev-eks-cluster"
+        //NODE_TYPE = "t3.medium"
+        //NODE_COUNT = "2"
     }
 
     stages {
@@ -36,14 +36,14 @@ pipeline {
         stage('Create EKS Cluster') {
             steps {
                 sh '''
-                eksctl create cluster \
-                  --name ${CLUSTER_NAME} \
-                  --region ${AWS_DEFAULT_REGION} \
-                  --node-type ${NODE_TYPE} \
-                  --nodes ${NODE_COUNT} \
-                  --nodes-min 1 \
-                  --nodes-max 3 \
-                  --managed
+                aws ec2 run-instances \
+                  --image-id ami-0a0f1259dd1c90938 \
+                  --instance-type t2.micro \
+                  --key-name mykey \
+                  --security-group-ids sg-1234567890abcdef0 \
+                  --subnet-id subnet-12345678 \
+                  --count 1
+
                 '''
             }
         }
